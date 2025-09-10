@@ -1,0 +1,5 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema",
+  "$ref": "https://csrc.nist.gov/schema/nvd/api/2.0/cve_api_json_2.0.schema"
+}
