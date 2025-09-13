@@ -1,3 +1,25 @@
+# Rohdaten / generierte Artefakte ignorieren (alle Dateien)
+data/raw/*
+data/processed/*
+data/derived/*
+data/old/*
+
+# Verzeichnisse selbst NICHT ignorieren (durch .gitkeep oder andere Ausnahmen)
+!data/raw/
+!data/processed/
+!data/derived/
+!data/old/
+
+# Platzhalter-Dateien zulassen, damit Ordner leer eingecheckt werden können
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/derived/.gitkeep
+!data/old/.gitkeep
+
+# Falls einzelne spezifische Outputs versioniert werden sollen, hier mit ! ausnehmen, z.B.:
+# !data/derived/cves_v31_sample.csv
+# Am Ende samples für die raw cves hinzufügen
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
