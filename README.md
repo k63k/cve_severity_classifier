@@ -1,7 +1,10 @@
 
-# cve_severity_classifier
+# Common Vulnerabilities and Exposures (CVE) Severity Classifier
+
+> Status (September 2025): ON HOLD – Weiterentwicklung vorübergehend pausiert.
 
 NLP-Projekt zur automatisierten Klassifizierung des CVSS-Schweregrads von CVEs auf Basis ihrer Beschreibungstexte (Zielklassen: CRITICAL, HIGH, MEDIUM, LOW). Der Fokus liegt auf reproduzierbarer Datenerhebung, schlankem Datenschema und effizienter Aktualisierung.
+
 
 ## Forschungsfrage & Analyseplan
 
@@ -58,7 +61,23 @@ Prinzipien:
 
 ### Installation & Nutzung
 
-Voraussetzungen: Python ≥ 3.10
+Voraussetzungen: Python ≥ 3.10 (empfohlen: 3.12.3 für reproduzierbare Ergebnisse – damit getestet)
+
+1. (Stark empfohlen) Virtuelle Umgebung anlegen & aktivieren:
+
+```bash
+# Falls Python 3.12 installiert ist
+python3.12 -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+# Windows (PowerShell): .venv\\Scripts\\Activate.ps1
+
+# Alternativ generisch (nimmt System-Python)
+python -m venv .venv
+source .venv/bin/activate
+
+python -V  # sollte 3.12.3 anzeigen (oder kompatible Version ≥3.10)
+pip install --upgrade pip
+```
 
 1. Abhängigkeiten installieren:
 
@@ -66,26 +85,26 @@ Voraussetzungen: Python ≥ 3.10
 pip install -r requirements.txt
 ```
 
-2. (Optional) spaCy Modell für Lemmatization:
+1. (Optional) spaCy Modell für Lemmatization:
 
 ```bash
 python -m spacy download en_core_web_sm
 ```
 
-3. (Optional) NVD API Key & Kontakt hinterlegen: `.env` Datei erstellen.
+1. (Optional) NVD API Key & Kontakt hinterlegen: `.env` Datei erstellen.
 
-4. Datenerhebung ausführen:
+1. Datenerhebung ausführen:
 
 ```bash
 python scripts/nvd_cve_fetcher/nvd_cve_fetcher.py
 python scripts/cves_json_to_csv.py
 ```
 
-5. Preprocessing Varianten generieren: Notebook `02_preprocessing_variants.ipynb` ausführen.
+1. Preprocessing Varianten generieren: Notebook `02_preprocessing_variants.ipynb` ausführen.
 
-6. Klassische Modelle: `03_classic_models.ipynb` (lädt Varianten automatisch).
+1. Klassische Modelle: `03_classic_models.ipynb` (lädt Varianten automatisch).
 
-7. CNN Grundmodell: `04_cnn_model.ipynb` (experimentell).
+1. CNN Grundmodell: `04_cnn_model.ipynb` (experimentell).
 
 Falls `en_core_web_sm` fehlt, werden Lemma-Dateien übersprungen – die übrigen Varianten bleiben verfügbar.
 
@@ -120,6 +139,7 @@ Erzeugt durch `02_preprocessing_variants.ipynb` unter `data/processed/`:
 | clean_lemma | `cves_processed_text_clean_lemma.csv` | clean + Lemmatization |
 
 Hinweise:
+
 * Lemmatization nur falls `en_core_web_sm` installiert
 * Spalten: `cve_id,severity,severity_id,description_clean`
 * Mapping: `low=0, medium=1, high=2, critical=3`
