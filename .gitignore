@@ -1,17 +1,18 @@
 # Rohdaten / generierte Artefakte ignorieren (alle Dateien)
 data/raw/*
 data/processed/*
-data/old/*
 
 # Verzeichnisse selbst NICHT ignorieren (durch .gitkeep oder andere Ausnahmen)
 !data/raw/
 !data/processed/
-!data/old/
 
 # Platzhalter-Dateien zulassen, damit Ordner leer eingecheckt werden können
 !data/raw/.gitkeep
 !data/processed/.gitkeep
-!data/old/.gitkeep
+
+# Ergebnisse / Laufartefakte außerhalb der Eingangsdaten
+results/*
+!results/.gitkeep
 
 # Falls einzelne spezifische Outputs versioniert werden sollen, hier mit ! ausnehmen
 # Beispiel: !data/raw/sample.csv

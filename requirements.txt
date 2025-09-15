@@ -5,3 +5,18 @@ jsonschema==4.21.1
 tqdm==4.66.1
 python-dotenv==1.0.1
 pyarrow>=15,<19
+numpy==1.26.4
+scikit-learn==1.4.2
+nltk==3.8.1
+gensim==4.3.2
+scipy==1.12.0
+spacy==3.7.4
+joblib==1.4.2
+matplotlib==3.8.2
+seaborn==0.13.2
+
+# spaCy English model (small) – installed as a Python package for reproducible environments
+en-core-web-sm==3.7.1
+
+# Deep Learning (für CNN Notebook)
+torch==2.2.2
